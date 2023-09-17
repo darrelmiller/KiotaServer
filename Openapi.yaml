@@ -3,7 +3,7 @@ info:
   title: My Fruity API
   version: 1.0.0
 servers:
-  - url: http://localhost:7271
+  - url: https://localhost:7271
     description: Local server
 paths:
   /fruits:
@@ -66,9 +66,72 @@ paths:
             application/cbor:
               schema:
                 $ref: '#/components/schemas/Fruit'
+  /meteoriteLandings:
+    get:
+      summary: Get all meteorite landings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/meteoriteLanding'
+    post:
+      summary: Create a meteorite landings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/meteoriteLanding'
+      responses:
+        '204':
+          description: Created
 
 components:
   schemas:
+    meteoriteLanding:
+      type: object
+      properties:
+        id:
+          type: number
+          format: int64
+        name:
+          type: string
+        fall:
+          type: string
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+        mass:
+          type: number
+          format: double
+        nametype:
+          type: string
+        recclass:
+          type: string
+        reclat:
+          type: number
+          format: double
+        reclong:
+          type: number
+          format: double
+        year:
+          type: string
+          format: date
+    Geolocation:
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: number
+            format: double
     Fruit:
       type: object
       properties:

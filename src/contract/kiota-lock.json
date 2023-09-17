@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "C5A3C4A1B240922BA206DF16FC7C839DCF79F4A0083425B7006906F199DA8E80EBFFF88A4B130DB4F9F0FB5D34CEBDCE2077DAB61A822D21AEDD23207C7D9D09",
+  "descriptionHash": "0F4A480FB24F69EC3E0B6F3CD981C27BB06D48DBFED97AA4E1CA7796AAAE9F8306BBE7457B10BF3FE4A5C6E5BD3182336E88B3F5B4E9D95DE25498B3DF55E132",
   "descriptionLocation": "C:\\Users\\darrmi\\src\\github\\darrelmiller\\KiotaServer\\Openapi.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.6.1",
@@ -24,7 +24,8 @@
     "/echofruitAsCbor",
     "/echofruitAsJson",
     "/fruits",
-    "/fruits/{name}"
+    "/fruits/{name}",
+    "/meteoriteLandings"
   ],
   "excludePatterns": [],
   "disabledValidationRules": []

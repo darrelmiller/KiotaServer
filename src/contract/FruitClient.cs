@@ -2,6 +2,7 @@
 using KiotaFruit.EchofruitAsCbor;
 using KiotaFruit.EchofruitAsJson;
 using KiotaFruit.Fruits;
+using KiotaFruit.MeteoriteLandings;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Serialization.Cbor;
@@ -27,6 +28,10 @@ namespace KiotaFruit {
         /// <summary>The fruits property</summary>
         public FruitsRequestBuilder Fruits { get =>
             new FruitsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The meteoriteLandings property</summary>
+        public MeteoriteLandingsRequestBuilder MeteoriteLandings { get =>
+            new MeteoriteLandingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new FruitClient and sets the default values.

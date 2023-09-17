@@ -68,6 +68,12 @@ public class FruitService
     {
         return  await fruitClient.EchofruitAsCbor.PostAsync(fruit);
     }
+
+    // Get meteorite landings
+    public async Task<IEnumerable<MeteoriteLanding>> GetMeteoriteLandingsAsync()
+    {
+        return await fruitClient.MeteoriteLandings.GetAsync();
+    }
 }
 
 public class HttpVersionMessageHandler : DelegatingHandler

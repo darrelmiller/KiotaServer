@@ -7,25 +7,25 @@ GET https://localhost:7271/fruit/apple
 Accept: application/json
 
 ### Get all the fruits as CBOR
-GET http://localhost:7271/fruits 
+GET https://localhost:7271/fruits 
 Accept: application/cbor
 Accept-Encoding: identity
 
 ### Get all the fruits as JSON
-GET http://localhost:7271/fruits 
+GET https://localhost:7271/fruits 
 Accept: application/json
 Accept-Encoding: identity
 
 
 ### Echo back the returned fruit but in JSON
-POST http://localhost:7271/echofruitAsCbor
+POST https://localhost:7271/echofruitAsCbor
 Content-Type: application/cbor
 Accept: application/cbor
 
 < banana.bin
 
 ### Echo the sent JSON back in CBOR
-POST http://localhost:7271/echofruitAsJson
+POST https://localhost:7271/echofruitAsJson
 Content-Type: application/json
 Accept: application/json
 
@@ -36,3 +36,24 @@ Accept: application/json
   "citrus": false
 }
 
+### Get meteoriteLandings as JSON
+GET https://localhost:7271/meteoriteLandings 
+Accept: application/json
+
+### Get meteoriteLandings as JSON
+GET https://localhost:7271/meteoriteLandings 
+Accept: application/cbor
+
+
+### What is the latency of a Microsoft Graph call
+GET https://graph.microsoft.com/v1.0/me/joinedTeams?$select=id,displayName
+Accept: application/json
+Authorization: Bearer {{$aadV2Token scopes:Team.ReadBasic.All}}
+Accept-Encoding: gzip
+
+
+### What is the latency of a Microsoft Graph call
+GET https://graph.microsoft.com/v1.0/me/users
+Accept: application/json
+Authorization: Bearer {{$aadV2Token scopes:Team.ReadBasic.All,User.Read.All}}
+Accept-Encoding: gzip

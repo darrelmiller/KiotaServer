@@ -18,4 +18,7 @@
     <ProjectReference Include="..\contract\contract.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="MeteoriteLandings.json" />  
+  </ItemGroup>
 </Project>

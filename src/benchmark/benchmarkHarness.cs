@@ -5,10 +5,10 @@ using KiotaFruit.Models;
 namespace KiotaFruit
 {
     [AllStatisticsColumn] 
-    [ShortRunJob]
+    //[ShortRunJob]
     public class BenchmarkHarness
     {
-        [Params(100)]
+        [Params(10)]
         public int Iterations;
 
         [Params(1,10)]
@@ -123,7 +123,19 @@ namespace KiotaFruit
                 await Task.WhenAll(tasks);
             }
         }
-
+        [Benchmark]
+        public async Task GetMeteoriteLandings()
+        {
+            var fruitService = fruitServices[$"{ContentType}-{Encoding}-{HttpVersion}"];
+            for (int i = 0; i < Iterations; i+=ConcurrentRequests)
+            {
+                var tasks = new Task[ConcurrentRequests];
+                for(int j = 0; j < ConcurrentRequests; j++) {
+                    tasks[j] = fruitService.GetMeteoriteLandingsAsync();
+                }
+                await Task.WhenAll(tasks);
+            }
+        }
     }
 
     public class AllowNonOptimized : ManualConfig

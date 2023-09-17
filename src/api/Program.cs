@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.Runtime.ExceptionServices;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -116,7 +117,15 @@ app.MapPost("/echofruitAsCbor",(HttpContext context) => {
     string? contentType = NegotiateContentType(context, supportedMediaTypes);
     return new KiotaResult<Fruit>(fruit, contentType);
 });
+var assembly = Assembly.GetExecutingAssembly();
+                    var resourceStream = assembly.GetManifestResourceStream("api.MeteoriteLandings.json");
+var meteoriteLandingsNode = parseNodeRegistry.GetRootParseNode("application/json",resourceStream);
+var meteoriteLandings = meteoriteLandingsNode.GetCollectionOfObjectValues<MeteoriteLanding>(MeteoriteLanding.CreateFromDiscriminatorValue).ToList();
 
+app.MapGet("meteoriteLandings", (HttpContext context) => {
+    string? contentType = NegotiateContentType(context, supportedMediaTypes);
+    return new KiotaResult<MeteoriteLanding>(meteoriteLandings, contentType);
+});
 
 app.Run();
 

@@ -1,11 +1,12 @@
 ﻿using BenchmarkDotNet.Running;
 using KiotaFruit;
 
-await GetSizes();
-BenchmarkRunner.Run<BenchmarkHarness>();
+
+//await GetSizes();
+BenchmarkRunner.Run<BenchmarkHarness>(args:args);
 
 async Task GetSizes() {
-    Console.WriteLine($"Payload sizes");
+    Console.WriteLine($"Size of fruits payload");
     Console.WriteLine("==========");
     await SummarizeSizes();
 }
