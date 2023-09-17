@@ -12,4 +12,10 @@
     <PackageReference Include="System.Formats.Cbor" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\microsoft\kiota-serialization-cbor-dotnet\src\Microsoft.Kiota.Serialization.Cbor.csproj" />
+    <ProjectReference Include="..\..\..\..\microsoft\kiota-serialization-json-dotnet\src\Microsoft.Kiota.Serialization.Json.csproj" />
+    <ProjectReference Include="..\contract\contract.csproj" />
+  </ItemGroup>
+
 </Project>

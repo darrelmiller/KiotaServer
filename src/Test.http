@@ -1,0 +1,38 @@
+### Get a fruit as CBOR
+GET https://localhost:7271/fruit/banana 
+Accept: application/cbor
+
+### Get a fruit as JSON
+GET https://localhost:7271/fruit/apple 
+Accept: application/json
+
+### Get all the fruits as CBOR
+GET http://localhost:7271/fruits 
+Accept: application/cbor
+Accept-Encoding: identity
+
+### Get all the fruits as JSON
+GET http://localhost:7271/fruits 
+Accept: application/json
+Accept-Encoding: identity
+
+
+### Echo back the returned fruit but in JSON
+POST http://localhost:7271/echofruitAsCbor
+Content-Type: application/cbor
+Accept: application/cbor
+
+< banana.bin
+
+### Echo the sent JSON back in CBOR
+POST http://localhost:7271/echofruitAsJson
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Banana",
+  "color": "Yellow",
+  "weight": 100,
+  "citrus": false
+}
+

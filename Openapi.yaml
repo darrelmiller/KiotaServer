@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: My Fruity API
+  version: 1.0.0
+servers:
+  - url: http://localhost:7271
+    description: Local server
+paths:
+  /fruits:
+    get:
+      summary: Get all fruits
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fruit'
+  /fruits/{name}:
+    get:
+      summary: Get a fruit by name
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fruit'
+  /echofruitAsJson:
+    post:
+      summary: Echo a fruit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Fruit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fruit'
+  /echofruitAsCbor:
+    post:
+      summary: Echo a fruit
+      requestBody:
+        required: true
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/Fruit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/cbor:
+              schema:
+                $ref: '#/components/schemas/Fruit'
+
+components:
+  schemas:
+    Fruit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        color:
+          type: string
+        weight:
+          type: number
+        citrus:
+          type: boolean
+        description:
+          type: string
+        createdDateTime:
+          type: string
+          format: date-time
+        lastModifiedDateTime:
+          type: string
+          format: date-time
