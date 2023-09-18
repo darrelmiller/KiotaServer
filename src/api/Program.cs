@@ -15,9 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel((context, options) =>
 {
-    options.ListenAnyIP(7271, listenOptions =>
+    options.ListenAnyIP(8080, listenOptions =>
     {
-        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
         listenOptions.UseHttps();
     });
     
@@ -80,7 +80,7 @@ var fruits = new Dictionary<string,Fruit>() {
 };
 // Add more fruits
 
-
+app.MapGet("/", () => "Welcome to the Kiota Fruit Test API!");
 
 
 app.MapGet("/fruits/{name}", (HttpContext context) =>

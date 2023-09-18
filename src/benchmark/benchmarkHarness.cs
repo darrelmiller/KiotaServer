@@ -8,10 +8,10 @@ namespace KiotaFruit
     //[ShortRunJob]
     public class BenchmarkHarness
     {
-        [Params(10)]
+        [Params(100)]
         public int Iterations;
 
-        [Params(1,10)]
+        [Params(1,10,20)]
         public int ConcurrentRequests;
 
 
@@ -21,7 +21,7 @@ namespace KiotaFruit
         [Params("gzip", "identity")]
         public string Encoding;
 
-        [Params(FruitService.HttpVersion.V1_1, FruitService.HttpVersion.V2_0, FruitService.HttpVersion.V3_0)]
+        [Params(FruitService.HttpVersion.V1_1, FruitService.HttpVersion.V2_0)]
         public static FruitService.HttpVersion HttpVersion;
 
         private Dictionary<string, FruitService> fruitServices;

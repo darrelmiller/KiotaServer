@@ -16,6 +16,8 @@ GET https://localhost:7271/fruits
 Accept: application/json
 Accept-Encoding: identity
 
+###
+GET https://wapp-uelvmjmowoyug.azurewebsites.net/fruits
 
 ### Echo back the returned fruit but in JSON
 POST https://localhost:7271/echofruitAsCbor
@@ -53,7 +55,15 @@ Accept-Encoding: gzip
 
 
 ### What is the latency of a Microsoft Graph call
-GET https://graph.microsoft.com/v1.0/me/users
+GET https://graph.microsoft.com/v1.0/users
+Accept: application/json
+Authorization: Bearer {{$aadV2Token scopes:Team.ReadBasic.All,User.Read.All}}
+Accept-Encoding: gzip
+
+
+
+### What is the latency of a Microsoft Graph call
+GET https://graph.microsoft.com/v1.0/me?$select=id,displayName
 Accept: application/json
 Authorization: Bearer {{$aadV2Token scopes:Team.ReadBasic.All,User.Read.All}}
 Accept-Encoding: gzip

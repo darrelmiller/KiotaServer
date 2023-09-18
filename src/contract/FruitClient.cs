@@ -43,7 +43,7 @@ namespace KiotaFruit {
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<CborParseNodeFactory>();
             if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
-                RequestAdapter.BaseUrl = "https://localhost:7271";
+                RequestAdapter.BaseUrl = "https://wapp-uelvmjmowoyug.azurewebsites.net";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }
